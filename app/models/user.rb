@@ -6,12 +6,11 @@ class User < ApplicationRecord
     has_many :posts,
         foreign_key: :user_id,
         class_name: 'Post'
-        dependent: :destroy
-
+      
     has_many :subs,
         foreign_key: :moderator_id,
         class_name: 'Sub'
-        dependent: :destroy
+     
 
     attr_reader :password
 
