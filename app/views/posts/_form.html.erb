@@ -34,7 +34,7 @@
         name="post[sub_ids][]"
         value="<%= sub.id %>"
         <%= "checked" if post.sub_ids.include?(sub.id) %>>
-      <%= sub.name %>
+      <%= sub.title %>
     </label>
     <br>
   <% end %>

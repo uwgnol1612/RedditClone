@@ -10,6 +10,8 @@ class User < ApplicationRecord
     has_many :subs,
         foreign_key: :moderator_id,
         class_name: 'Sub'
+
+    has_many :comments
      
 
     attr_reader :password

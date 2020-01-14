@@ -1,6 +1,6 @@
 <div>
     <h1>
-        <%= @sub.name %>
+        <%= @sub.title %>
     </h1>
 
 
@@ -9,7 +9,8 @@
 
     <h4>Links</h4>
     <a href="<%= edit_sub_url(@sub) if @sub.moderator == current_user %>">Edit Sub</a>
-    <a href="<%= new_post_url %>">Make New Post!</a>
+    <br>
+    <a href="<%= new_post_url %>">New Post!</a>
 
     <h4>Posts</h4>
     <% if @sub.posts.length > 0 %>
