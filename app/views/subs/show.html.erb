@@ -1,0 +1,24 @@
+<div>
+    <h1>
+        <%= @sub.name %>
+    </h1>
+
+
+    <h3>Description</h3>
+    <h4><%= @sub.description %></h4>
+
+    <h4>Links</h4>
+    <a href="<%= edit_sub_url(@sub) if @sub.moderator == current_user %>">Edit Sub</a>
+    <a href="<%= new_post_url %>">Make New Post!</a>
+
+    <h4>Posts</h4>
+    <% if @sub.posts.length > 0 %>
+        <ul>
+            <% @sub.posts.each do |post| %>
+                <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p>This sub has no posts...yet</p>
+    <% end %>
+</div>
