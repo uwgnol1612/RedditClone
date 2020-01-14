@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  
+  before_action :require_user!, only: [:show]
+  before_action :require_signed_out!, only: [:new, :create]
+
   def show
     render :show
   end

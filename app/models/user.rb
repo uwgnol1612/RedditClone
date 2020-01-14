@@ -12,10 +12,10 @@ class User < ApplicationRecord
         class_name: 'Sub'
 
     has_many :comments
+    has_many :votes
      
 
     attr_reader :password
-
     after_initialize :ensure_session_token
 
     def self.find_by_credentials(email, password)

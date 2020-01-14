@@ -16,7 +16,7 @@
     <% if @sub.posts.length > 0 %>
         <ul>
             <% @sub.posts.each do |post| %>
-                <li><a href="<%= post_url(post) %>"><%= post.title %></a></li>
+                <li>(<%= post.user_votes %>)<a href="<%= post_url(post) %>"><%= post.title %></a></li>
             <% end %>
         </ul>
     <% else %>

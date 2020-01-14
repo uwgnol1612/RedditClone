@@ -19,6 +19,12 @@ class Comment < ApplicationRecord
         foreign_key: :parent_comment_id,
         optional: true
 
+    has_many :votes, as: :votable, class_name: "Vote"
+
+    def user_votes
+        self.votes.sum(:value)
+    end
+
     private
     def ensure_post_id!
         self.post_id ||= self.parent_comment.post_id if parent_comment

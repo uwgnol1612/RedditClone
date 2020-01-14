@@ -1,5 +1,5 @@
 <div>
-  <a href="<%= comment_url(comment.id) %>"><%= comment.body %></a>
+  (<%= comment.user_votes %>)<a href="<%= comment_url(comment.id) %>"><%= comment.body %></a>
 </div>
 
 <ul>

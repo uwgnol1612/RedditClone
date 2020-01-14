@@ -21,8 +21,25 @@ class CommentsController < ApplicationController
         @new_comment = @comment.child_comments.new
     end
 
+    def downvote
+        vote(-1)
+    end
+
+    def upvote
+        vote(1)
+    end
+
     private
     def comment_params
         params.require(:comment).permit(:body, :post_id, :parent_comment_id)
+    end
+
+    def vote(direction)
+        @comment = Comment.find(params[:id])
+        @vote = @comment.votes.find_or_initialize_by(user: current_user)
+        unless @vote.update(value: direction)
+            flash[:errors] = @vote.errors.full_messages
+        end
+        redirect_to comment_url(@comment)
     end
 end

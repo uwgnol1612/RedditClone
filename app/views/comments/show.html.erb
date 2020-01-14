@@ -1,5 +1,24 @@
 <div class="border">
   <h1><%= @comment.body %> by <%= @comment.author.email %></h1>
+   <%= @comment.user_votes %> upvotes
+
+   <br><br>
+
+  <form action="<%= upvote_comment_url(@comment) %>" method="post">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    <input type="submit" value="Upvote">
+  </form>
+  
+  <form action="<%= downvote_comment_url(@comment) %>" method="post">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    <input type="submit" value="Downvote">
+  </form>
   
   <h4>Reply to this comment:</h4>
   <%= render "form", comment: @new_comment %>
